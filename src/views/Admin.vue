@@ -43,6 +43,8 @@
 
 <script>
 import navBar from '../components/navBar.vue'
+import axios from 'axios'
+
 export default {
   data: () => ({
     search: '',
@@ -66,6 +68,14 @@ export default {
     } else {
       this.$router.replace({ name: 'login' })
       localStorage.clear()
+    }
+    this.getData()
+  },
+  methods: {
+    getData () {
+      var dataUrl = 'http://a3f2a960.ngrok.io/api/item'
+      axios.get(dataUrl)
+        .then(response => console.log(response))
     }
   }
 }
