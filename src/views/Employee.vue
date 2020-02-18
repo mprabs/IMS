@@ -32,11 +32,13 @@
                 fixed-header
                 height="380px"
               >
-                <template #item.action>
-                  <v-btn class="ma-2" rounded outlined color="success">
+                <template #item.action v-slot:activator="{ on }">
+              <v-dialog>
+                  <v-btn class="ma-2" rounded outlined color="success" v-on="on">
                     <!-- <v-icon left>mdi-thumb-up</v-icon> -->
                     Request
                   </v-btn>
+              </v-dialog>
                 </template>
               </v-data-table>
               <v-dialog v-model="dialog" width="500">
