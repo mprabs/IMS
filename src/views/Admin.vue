@@ -59,9 +59,13 @@ export default {
     navBar
   },
   mounted () {
-    if (localStorage.getItem('userdetails')) {
+    if (localStorage.getItem('pageDetails') === 'admin') {
+    } else if (localStorage.getItem('pageDetails')) {
+      var pageAuth = localStorage.getItem('pageDetails')
+      this.$router.replace({ name: pageAuth })
     } else {
       this.$router.replace({ name: 'login' })
+      localStorage.clear()
     }
   }
 }
